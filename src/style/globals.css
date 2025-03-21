@@ -1,5 +1,8 @@
+@import "tailwindcss";
+
+
 :root {
-  --color-background: #fffdf7;
+  --color-background: #ffff;
   --color-black: #212121;
   --color-text: #4f4f4f;
   --color-text-out: #90908e;
@@ -16,7 +19,6 @@
 
 
 body {
-  background: #fff5e7dc;
+  background: var(--color-background);
   color: var(--color-text);
 }
-
