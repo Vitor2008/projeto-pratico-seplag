@@ -4,10 +4,12 @@ const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false)
 
   return (
-    <header className="bg-azul-7 text-white shadow-md sticky top-0 z-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-16">
-        <h1 className="text-xl font-bold">SEPLAG</h1>
-
+    <header className="text-white shadow-md sticky top-0 z-50 bg-azul-7">
+      <div className='flex p-4 items-center px-20'>
+          <img className='w-20 rounded-full' src='./public/logo.png'/>
+          <h1 className="text-xl font-bold">SEPLAG</h1>
+      </div>
+      <div className="mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-16 bg-cinza">
         {/* Menu Desktop */}
         <nav className="hidden md:flex space-x-6">
           <a href="#" className="hover:text-azul-3 transition">Home</a>
@@ -32,7 +34,7 @@ const Header = () => {
 
       {/* Menu Mobile */}
       {menuOpen && (
-        <nav className="md:hidden text-white border-t border-gray-200 px-4 py-2 space-y-2 text-azul-7">
+        <nav className="md:hidden text-white border-t border-gray-200 px-4 py-2 space-y-2 bg-azul-4">
           <a href="#" className="block hover:text-azul-3 transition">Home</a>
           <a href="#" className="block hover:text-azul-3 transition">Sobre</a>
           <a href="#" className="block hover:text-azul-3 transition">Contato</a>
