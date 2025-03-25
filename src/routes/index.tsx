@@ -2,6 +2,7 @@ import { lazy, Suspense } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Home from '../components/Home';
 import Header from '../components/Header';
+import Footer from '../components/Footer';
 
 const Detalhes = lazy(() => import('../components/Detalhes'));
 
@@ -17,6 +18,7 @@ export default function AppRoutes() {
         </Routes>
       </Suspense>
       </div>
+      <Footer/>
     </div>
   );
 }
