@@ -1,26 +1,10 @@
 
-// import { useNavigate } from 'react-router-dom';
-
-// export default function Home() {
-//   const navigate = useNavigate(); // Hook para navegação
-
-//   function handleSalvar() {
-//     const id = 123; // ou o ID real da pessoa, vindo de API ou input
-//     navigate(`/detalhes/${id}`);
-//   }
-
-//   return (
-//     <div>
-//       <header>Projeto teste</header>
-//       <button onClick={handleSalvar} type="button">Salvar</button>
-//     </div>
-//   );
-// }
 import { useEffect, useState } from "react";
-import { buscarDesaparecidos } from "../../services/api";
+import { useNavigate } from "react-router-dom";
+import { buscarDesaparecidos, buscarDetalheDesaparecido } from "../../services/api";
 
 interface Desaparecido {
-  id: string;
+  id: number;
   nome: string;
   idade: number;
   urlFoto: string;
@@ -34,6 +18,7 @@ export default function Home() {
   const [desaparecidos, setDesaparecidos] = useState<Desaparecido[]>([]);
   const [paginaAtual, setPaginaAtual] = useState(1);
   const [itensPorPagina] = useState(10);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const obterDesaparecidos = async () => {
@@ -42,6 +27,15 @@ export default function Home() {
     };
     obterDesaparecidos();
   }, []);
+
+  const handleDetalhesClick = async (id: number) => {
+    try {
+      const detalhes = await buscarDetalheDesaparecido(id);
+      navigate(`/detalhes/${id}`, { state: { detalhes } });
+    } catch (error) {
+      console.error("Erro ao buscar detalhes:", error);
+    }
+  };
 
   const indiceUltimoItem = paginaAtual * itensPorPagina;
   const indicePrimeiroItem = indiceUltimoItem - itensPorPagina;
@@ -54,7 +48,8 @@ export default function Home() {
       <h1 className="text-2xl font-bold mb-4">Pessoas Desaparecidas</h1>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
         {desaparecidosPaginados.map((desaparecido) => (
-          <div key={desaparecido.id} className="bg-white shadow-md rounded-lg p-4">
+          <div key={desaparecido.id} className="bg-white shadow-md rounded-lg p-4 cursor-pointer hover:shadow-lg transition"
+          onClick={() => handleDetalhesClick(desaparecido.id)}>
             <img
               src={desaparecido.urlFoto}
               alt={desaparecido.nome}

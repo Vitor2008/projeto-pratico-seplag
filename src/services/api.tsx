@@ -12,6 +12,19 @@
 //     }
 //   }
 
+// export const buscarDetalheDesaparecido = async (id: number) => {
+//   try {
+//     const response = await fetch(`https://api.exemplo.com/desaparecidos/${id}`);
+//     if (!response.ok) {
+//       throw new Error("Erro ao buscar detalhes");
+//     }
+//     return await response.json();
+//   } catch (error) {
+//     console.error("Erro ao buscar detalhes:", error);
+//     throw error;
+//   }
+// };
+
 
 export async function buscarDesaparecidos() {
   return new Promise((resolve) => {
@@ -212,4 +225,33 @@ export async function buscarDesaparecidos() {
       ]);
     }, 2000); // Simula um tempo de carregamento
   });
-}
+};
+
+export const buscarDetalheDesaparecido = async (id: number) => {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve({
+        id,
+        nome: "João da Silva",
+        idade: 30,
+        sexo: "MASCULINO",
+        vivo: false,
+        urlFoto: "../../../public/1.jpeg",
+        ultimaOcorrencia: {
+          dtDesaparecimento: "2024-03-10T15:00:00Z",
+          dataLocalizacao: null,
+          encontradoVivo: false,
+          localDesaparecimentoConcat: "Rua ABC, Centro, Cuiabá - MT",
+          ocoId: 6789,
+          listaCartaz: [
+            {
+              urlCartaz: "https://via.placeholder.com/600x800.png?text=Cartaz+Desaparecido",
+              tipoCartaz: "PDF_DESAPARECIDO",
+            },
+          ],
+        },
+      });
+    }, 3000); // Simula um atraso de 1 segundo
+  });
+};
+
