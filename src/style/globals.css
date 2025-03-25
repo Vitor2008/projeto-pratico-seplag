@@ -23,43 +23,35 @@ body {
 
 .bg-cinza {
   background-color: var(--color-cinza);
-  color: var(--color-white);
   font-weight: bold;
 }
 
 .bg-azul-1{
   background-color: var(--color-azul-01);
-  color: var(--color-white);
 }
 
 .bg-azul-2{
   background-color: var(--color-azul-02);
-  color: var(--color-white);
 }
 
 .bg-azul-3{
   background-color: var(--color-azul-03);
-  color: var(--color-white);
 }
 
 .bg-azul-4{
   background-color: var(--color-azul-04);
-  color: var(--color-white);
 }
 
 .bg-azul-5{
   background-color: var(--color-azul-05);
-  color: var(--color-white);
 }
 
 .bg-azul-6{
   background-color: var(--color-azul-06);
-  color: var(--color-white);
 }
 
 .bg-azul-7{
   background-color: var(--color-azul-07);
-  color: var(--color-white);
 }
 
 .text-azul-3{
@@ -68,4 +60,9 @@ body {
 
 header svg{
   color: var(--color-azul-06);
+}
+
+.inner-header{
+  max-width: 960px;
+  margin: 0 auto;
 }

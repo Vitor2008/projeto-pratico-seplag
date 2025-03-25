@@ -8,7 +8,7 @@ const Detalhes = lazy(() => import('../components/Detalhes'));
 
 export default function AppRoutes() {
   return (
-    <>
+    <div>
       <Header />
       <div className='md:w-[1024px] md:m-auto'>
       <Suspense fallback={<div className="p-4 text-gray-700">Carregando página...</div>}>
@@ -18,6 +18,6 @@ export default function AppRoutes() {
         </Routes>
       </Suspense>
       </div>
-    </>
+    </div>
   );
 }
