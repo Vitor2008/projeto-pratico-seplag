@@ -15,8 +15,8 @@ const Header = () => {
               {/* Menu Desktop */}
             <nav className="hidden md:flex space-x-6">
               <Link to="/" className="hover:text-azul-3 transition">Home</Link>
-              <a href="#" className="hover:text-azul-3 transition">Sobre</a>
-              <a href="#" className="hover:text-azul-3 transition">Contato</a>
+              <Link to="/" className="hover:text-azul-3 transition">Sobre</Link>
+              <Link to="/" className="hover:text-azul-3 transition">Contato</Link>
             </nav>
 
             {/* Botão Menu Mobile */}
@@ -39,8 +39,8 @@ const Header = () => {
         {menuOpen && (
           <nav className="md:hidden text-white border-t border-gray-200 px-4 py-2 space-y-2 bg-azul-4">
             <Link to="/" className="block hover:text-azul-3 transition">Home</Link>
-            <a href="#" className="block hover:text-azul-3 transition">Sobre</a>
-            <a href="#" className="block hover:text-azul-3 transition">Contato</a>
+            <Link to="/" className="block hover:text-azul-3 transition">Sobre</Link>
+            <Link to="/" className="block hover:text-azul-3 transition">Contato</Link>
           </nav>
         )}
     </header>
