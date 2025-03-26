@@ -10,13 +10,18 @@ const Header = () => {
         <img className='w-20 rounded-full' src='./public/logo.png'/>
         <h1 className="text-xl font-bold">SEPLAG</h1>
       </div>
+      {/* Barra de Navegação */}
         <div className="mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-16 bg-cinza">
           <div className='inner-header'>
               {/* Menu Desktop */}
-            <nav className="hidden md:flex space-x-6">
-              <Link to="/" className="hover:text-azul-3 transition">Home</Link>
-              <Link to="/" className="hover:text-azul-3 transition">Sobre</Link>
-              <Link to="/" className="hover:text-azul-3 transition">Contato</Link>
+            <nav className="hidden md:flex p-4">
+              <Link to="/" className="hover:text-azul-3 transition uppercase border-r-2 pl-4 pr-4">Página Inicial</Link>
+              <Link to="/" className="hover:text-azul-3 transition uppercase border-r-2 pl-4 pr-4">Institucional</Link>
+              <Link to="/" className="hover:text-azul-3 transition uppercase border-r-2 pl-4 pr-4">Sobre</Link>
+              <Link to="/" className="hover:text-azul-3 transition uppercase border-r-2 pl-4 pr-4">Serviços</Link>
+              <Link to="/" className="hover:text-azul-3 transition uppercase border-r-2 pl-4 pr-4">Dúvidas</Link>
+              <Link to="/" className="hover:text-azul-3 transition uppercase border-r-2 pl-4 pr-4">Ouvidoria</Link>
+              <Link to="/" className="hover:text-azul-3 transition uppercase border-r-2 pl-4 pr-4">Contato</Link>
             </nav>
 
             {/* Botão Menu Mobile */}
@@ -36,13 +41,19 @@ const Header = () => {
         </div>
 
         {/* Menu Mobile */}
-        {menuOpen && (
-          <nav className="md:hidden text-white border-t border-gray-200 px-4 py-2 space-y-2 bg-azul-4">
-            <Link to="/" className="block hover:text-azul-3 transition">Home</Link>
-            <Link to="/" className="block hover:text-azul-3 transition">Sobre</Link>
-            <Link to="/" className="block hover:text-azul-3 transition">Contato</Link>
-          </nav>
-        )}
+        <nav
+          className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out transform origin-top 
+            ${menuOpen ? 'scale-y-100 opacity-100 max-h-96' : 'scale-y-0 opacity-0 max-h-0'}
+            bg-azul-4 text-white border-t border-gray-200 px-4 py-2 space-y-2`}
+          >
+          <Link to="/" className="block hover:text-azul-3 transition uppercase border-b-1">Página Inicial</Link>
+          <Link to="/" className="block hover:text-azul-3 transition uppercase border-b-1">Institucional</Link>
+          <Link to="/" className="block hover:text-azul-3 transition uppercase border-b-1">Sobre</Link>
+          <Link to="/" className="block hover:text-azul-3 transition uppercase border-b-1">Serviços</Link>
+          <Link to="/" className="block hover:text-azul-3 transition uppercase border-b-1">Dúvidas</Link>
+          <Link to="/" className="block hover:text-azul-3 transition uppercase border-b-1">Ouvidoria</Link>
+          <Link to="/" className="block hover:text-azul-3 transition uppercase border-b-1">Contato</Link>
+        </nav>
     </header>
 
   )
