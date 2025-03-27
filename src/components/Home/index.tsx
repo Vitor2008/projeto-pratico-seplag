@@ -1,88 +1,46 @@
+import { useState, useEffect } from "react";
 
-import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { buscarDesaparecidos, buscarDetalheDesaparecido } from "../../services/api";
-
-interface Desaparecido {
-  id: number;
-  nome: string;
-  idade: number;
-  urlFoto: string;
-  vivo: boolean;
-  ultimaOcorrencia: {
-    localDesaparecimentoConcat: string;
-  };
-}
-
-export default function Home() {
-  const [desaparecidos, setDesaparecidos] = useState<Desaparecido[]>([]);
-  const [paginaAtual, setPaginaAtual] = useState(1);
-  const [itensPorPagina] = useState(10);
-  const navigate = useNavigate();
+const Home = () => {
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const images = [
+    "./public/img/1.jpeg",
+    "./public/img/2.jpeg",
+    "./public/img/3.jpeg",
+  ];
 
   useEffect(() => {
-    const obterDesaparecidos = async () => {
-      const dados = await buscarDesaparecidos();
-      setDesaparecidos(dados);
-    };
-    obterDesaparecidos();
-  }, []);
-
-  const handleDetalhesClick = async (id: number) => {
-    try {
-      const detalhes = await buscarDetalheDesaparecido(id);
-      navigate(`/detalhes/${id}`, { state: { detalhes } });
-    } catch (error) {
-      console.error("Erro ao buscar detalhes:", error);
-    }
-  };
-
-  const indiceUltimoItem = paginaAtual * itensPorPagina;
-  const indicePrimeiroItem = indiceUltimoItem - itensPorPagina;
-  const desaparecidosPaginados = desaparecidos.slice(indicePrimeiroItem, indiceUltimoItem);
-
-  const totalPaginas = Math.ceil(desaparecidos.length / itensPorPagina);
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % images.length);
+    }, 3000);
+    return () => clearInterval(interval);
+  }, [images.length]);
 
   return (
-    <div className="p-10">
-      <h1 className="text-2xl font-bold mb-4">Pessoas Desaparecidas</h1>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-        {desaparecidosPaginados.map((desaparecido) => (
-          <div key={desaparecido.id} className="bg-white shadow-md rounded-lg p-4 cursor-pointer hover:shadow-lg transition"
-          onClick={() => handleDetalhesClick(desaparecido.id)}>
-            <img
-              src={desaparecido.urlFoto}
-              alt={desaparecido.nome}
-              className="w-full h-48 object-cover rounded-md mb-4"
-            />
-            <h2 className="text-lg font-semibold">{desaparecido.nome}</h2>
-            <p>{desaparecido.idade} anos</p>
-            <p className={`mt-2 font-semibold ${desaparecido.vivo ? "text-green-600" : "text-red-600"}`}>
-                     {desaparecido.vivo ? "Localizado Vivo" : "Ainda Desaparecido"}
-            </p>
-            <p>{desaparecido.ultimaOcorrencia.localDesaparecimentoConcat}</p>
-          </div>
-        ))}
+    <div className="flex flex-col md:flex-row items-center justify-between p-10 gap-10">
+      <div className="w-full md:w-1/2 md:text-left">
+        <h1 className="text-xl md:text-xl font-bold text-azul-7 mb-4">
+          Busca Ativa por Desaparecidos
+        </h1>
+        <p className="text-lg text-gray-700 leading-relaxed">
+          Conectamos pessoas e informações para localizar desaparecidos e reunir famílias. 
+          Cada compartilhamento aumenta as chances de reencontro. Junte-se a essa missão e 
+          contribua para trazer esperança a quem precisa.
+        </p>
+        <p className="text-lg text-gray-700 leading-relaxed mt-4">
+          Nosso compromisso é oferecer 
+          dados confiáveis e facilitar o processo de busca. Conectamos pessoas e informações 
+          para localizar desaparecidos e reunir famílias. Cada compartilhamento aumenta as 
+          chances de reencontro. Junte-se a essa missão e contribua para trazer esperança.
+        </p>
       </div>
-
-      {/* Paginação */}
-      <div className="flex justify-center mt-10 mb-6">
-        <button
-          className="px-4 py-2 bg-blue-600 text-white rounded-l-md"
-          disabled={paginaAtual === 1}
-          onClick={() => setPaginaAtual(paginaAtual - 1)}
-        >
-          Anterior
-        </button>
-        <span className="px-4 py-2 text-lg font-semibold">{paginaAtual}</span>
-        <button
-          className="px-4 py-2 bg-blue-600 text-white rounded-r-md"
-          disabled={paginaAtual === totalPaginas}
-          onClick={() => setPaginaAtual(paginaAtual + 1)}
-        >
-          Próxima
-        </button>
+      <div className="w-full md:w-1/2 relative overflow-hidden">
+        <div
+          className="w-full h-64 md:h-96 bg-cover bg-center transition-all duration-500"
+          style={{ backgroundImage: `url(${images[currentSlide]})` }}
+        ></div>
       </div>
     </div>
   );
-}
+};
+
+export default Home;

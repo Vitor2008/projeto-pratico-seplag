@@ -7,7 +7,7 @@ const Header = () => {
   return (
     <header className="shadow-md sticky top-0 z-50 bg-azul-7">
       <div className='flex p-4 items-center px-20 inner-header text-white'>
-        <img className='w-20 rounded-full' src='./public/logo.png'/>
+        <img className='w-20 rounded-full' src='./public/img/logo.png'/>
         <h1 className="text-xl font-bold">SEPLAG</h1>
       </div>
       {/* Barra de Navegação */}
@@ -15,13 +15,13 @@ const Header = () => {
           <div className='inner-header'>
               {/* Menu Desktop */}
             <nav className="hidden md:flex p-4">
-              <Link to="/" className="hover:text-azul-3 transition uppercase border-r-2 pl-4 pr-4">Página Inicial</Link>
-              <Link to="/" className="hover:text-azul-3 transition uppercase border-r-2 pl-4 pr-4">Institucional</Link>
-              <Link to="/" className="hover:text-azul-3 transition uppercase border-r-2 pl-4 pr-4">Sobre</Link>
-              <Link to="/" className="hover:text-azul-3 transition uppercase border-r-2 pl-4 pr-4">Serviços</Link>
-              <Link to="/" className="hover:text-azul-3 transition uppercase border-r-2 pl-4 pr-4">Dúvidas</Link>
-              <Link to="/" className="hover:text-azul-3 transition uppercase border-r-2 pl-4 pr-4">Ouvidoria</Link>
-              <Link to="/" className="hover:text-azul-3 transition uppercase border-r-2 pl-4 pr-4">Contato</Link>
+              <Link to="/" className="hover:text-azul-3 transition uppercase border-r-2 pl-4 pr-4 text-sm">Página Inicial</Link>
+              <Link to="/" className="hover:text-azul-3 transition uppercase border-r-2 pl-4 pr-4 text-sm">Institucional</Link>
+              <Link to="/" className="hover:text-azul-3 transition uppercase border-r-2 pl-4 pr-4 text-sm">Sobre</Link>
+              <Link to="/" className="hover:text-azul-3 transition uppercase border-r-2 pl-4 pr-4 text-sm">Serviços</Link>
+              <Link to="/" className="hover:text-azul-3 transition uppercase border-r-2 pl-4 pr-4 text-sm">Dúvidas</Link>
+              <Link to="/" className="hover:text-azul-3 transition uppercase border-r-2 pl-4 pr-4 text-sm">Ouvidoria</Link>
+              <Link to="/" className="hover:text-azul-3 transition uppercase border-r-2 pl-4 pr-4 text-sm">Contato</Link>
             </nav>
 
             {/* Botão Menu Mobile */}
