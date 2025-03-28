@@ -39,11 +39,11 @@ export default function HomeDasaparecidos() {
   const handlePesquisar = async () => {
     try {
       const filtros = {
-        nome: nome || undefined,
-        faixaIdadeInicial: faixaIdadeInicial || undefined,
-        faixaIdadeFinal: faixaIdadeFinal || undefined,
-        sexo: sexo || undefined,
-        status: status || undefined,
+        nome: nome,
+        faixaIdadeInicial: faixaIdadeInicial,
+        faixaIdadeFinal: faixaIdadeFinal,
+        sexo: sexo,
+        status: status,
       };
 
       const dadosFiltrados = await buscarDesaparecidosComFiltro(filtros);
@@ -157,7 +157,8 @@ export default function HomeDasaparecidos() {
             onClick={() => handleDetalhesClick(desaparecido.id)}
           >
             <img
-              src={desaparecido.urlFoto}
+              src={desaparecido.urlFoto == null 
+                ? 'https://th.bing.com/th/id/OIP.z4b-8zmm_IHANxApPVXCCQHaHa?rs=1&pid=ImgDetMain' : desaparecido.urlFoto}
               alt={desaparecido.nome}
               className="w-full h-48 object-cover rounded-md mb-4"
             />
