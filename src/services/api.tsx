@@ -1,6 +1,6 @@
 export async function buscarDesaparecidos() {
     try {
-      const resposta = await fetch("https://abitus-api.geia.vip/v1/pessoas/aberto/filtro");
+      const resposta = await fetch("https://abitus-api.geia.vip/v1/pessoas/aberto");
       if (!resposta.ok) {
         throw new Error("Erro ao buscar dados da API");
       }
@@ -44,7 +44,6 @@ export async function buscarDesaparecidosComFiltro(filtros: {
       }
     });
 
-    console.log(url.toString());
     const resposta = await fetch(url.toString());
     
     if (!resposta.ok) {

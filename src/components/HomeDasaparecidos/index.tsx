@@ -10,13 +10,15 @@ interface Desaparecido {
   vivo: boolean;
   ultimaOcorrencia: {
     localDesaparecimentoConcat: string;
+    dataDesaparecimento: string,
+    dataLocalizacao: string
   };
 }
 
 export default function HomeDasaparecidos() {
   const [desaparecidos, setDesaparecidos] = useState<Desaparecido[]>([]);
   const [paginaAtual, setPaginaAtual] = useState(1);
-  const [itensPorPagina] = useState(5); // Parametriza a quantidades de cards por página
+  const [itensPorPagina] = useState(6); // Parametriza a quantidades de cards por página
   const navigate = useNavigate();
 
   // Estados para filtros
@@ -70,7 +72,9 @@ export default function HomeDasaparecidos() {
   return (
     <div className="p-10">
       <div className="p-6 bg-white shadow-md rounded-lg">
-        <h1 className="text-2xl font-bold mb-4">Filtros</h1>
+        <h1 className="text-lg md:text-xl font-bold text-white mb-4 bg-azul-1 p-1 text-center uppercase">
+          Filtros
+        </h1>
         <form className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {/* Nome */}
           <div>
@@ -133,7 +137,7 @@ export default function HomeDasaparecidos() {
             <button
               type="button"
               onClick={handlePesquisar}
-              className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition"
+              className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 cursor-pointer transition"
             >
               Pesquisar
             </button>
@@ -141,15 +145,15 @@ export default function HomeDasaparecidos() {
         </form>
       </div>
 
-      <div className="mt-10">
-        <h1 className="text-2xl font-bold mb-4">Pessoas Desaparecidas</h1>
-      </div>
+      <h1 className="text-lg md:text-xl font-bold text-white bg-azul-1 p-1 text-center uppercase">
+        Pessoas Desaparecidas
+      </h1>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 bg-cinza p-4">
         {desaparecidosPaginados.map((desaparecido) => (
           <div
             key={desaparecido.id}
-            className="bg-white shadow-md rounded-lg p-4 cursor-pointer hover:shadow-lg transition"
+            className="bg-white shadow-md rounded-lg p-4 cursor-pointer hover:shadow-lg hover-card transition"
             onClick={() => handleDetalhesClick(desaparecido.id)}
           >
             <img
@@ -157,24 +161,25 @@ export default function HomeDasaparecidos() {
               alt={desaparecido.nome}
               className="w-full h-48 object-cover rounded-md mb-4"
             />
-            <h2 className="text-lg font-semibold">{desaparecido.nome}</h2>
+            <h2 className="text-lg font-semibold uppercase">{desaparecido.nome}</h2>
+            <h2 className={`text-lg font-semibold uppercase ${desaparecido.ultimaOcorrencia.dataLocalizacao == null ? "text-red-600": "text-green-600"}`}>{desaparecido.ultimaOcorrencia.dataLocalizacao == null ? "Desaparecido": "Encontrado"}</h2>
             <p>{desaparecido.idade} anos</p>
-            <p className={`mt-2 font-semibold ${desaparecido.vivo ? "text-green-600" : "text-red-600"}`}>
-              {desaparecido.vivo ? "Localizado Vivo" : "Ainda Desaparecido"}
+            <p className={"mt-1 font-bold"}>
+              Local desaparecimento:
             </p>
-            <p>{desaparecido.ultimaOcorrencia.localDesaparecimentoConcat}</p>
+            <p className="font-semibold">{desaparecido.ultimaOcorrencia.localDesaparecimentoConcat}</p>
           </div>
         ))}
       </div>
 
-      <p className="text-lg font-semibold text-gray-700 mt-4">
+      <p className="text-lg font-bold text-gray-700 mt-4 text-azul-4">
         Total encontrados: {desaparecidos.length}
       </p>
 
       {/* Paginação */}
       <div className="flex items-center mt-6 space-x-2">
         <button
-          className={`px-4 py-2 rounded-l-md transition ${
+          className={`px-4 py-2 rounded-l-md transition cursor-pointer ${
             paginaAtual === 1
               ? "bg-gray-300 text-gray-500 cursor-not-allowed"
               : "bg-blue-600 text-white hover:bg-blue-700"
@@ -185,12 +190,12 @@ export default function HomeDasaparecidos() {
           Anterior
         </button>
 
-        <span className="px-4 py-2 text-lg font-semibold">
+        <span className="px-4 py-2 text-sm font-semibold">
           Página {paginaAtual} de {totalPaginas}
         </span>
 
         <button
-          className={`px-4 py-2 rounded-r-md transition ${
+          className={`px-4 py-2 rounded-r-md transition cursor-pointer ${
             paginaAtual >= totalPaginas || desaparecidos.length <= itensPorPagina
               ? "bg-gray-300 text-gray-500 cursor-not-allowed"
               : "bg-blue-600 text-white hover:bg-blue-700"

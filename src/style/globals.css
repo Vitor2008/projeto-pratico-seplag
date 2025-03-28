@@ -58,6 +58,10 @@ body {
    color: var(--color-azul-03);
 }
 
+.text-azul-4{
+  color: var(--color-azul-04);
+}
+
 header svg{
   color: var(--color-azul-06);
 }
@@ -65,4 +69,9 @@ header svg{
 .inner-header{
   max-width: 960px;
   margin: 0 auto;
+}
+
+.hover-card:hover{
+  background-color: var(--color-azul-01);
+  color: white;
 }

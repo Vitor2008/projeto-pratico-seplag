@@ -18,8 +18,8 @@ const Home = () => {
   return (
     <div className="flex flex-col md:flex-row items-center justify-between p-10 gap-10">
       <div className="w-full md:w-1/2 md:text-left">
-        <h1 className="text-xl md:text-xl font-bold text-azul-7 mb-4">
-          Busca Ativa por Desaparecidos
+        <h1 className="text-lg md:text-xl font-bold text-white mb-4 bg-azul-1 p-1 uppercase">
+          Busca Por Desaparecidos
         </h1>
         <p className="text-lg text-gray-700 leading-relaxed">
           Conectamos pessoas e informações para localizar desaparecidos e reunir famílias. 
