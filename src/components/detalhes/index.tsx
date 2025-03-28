@@ -55,7 +55,7 @@ export default function Detalhes() {
       <div className="w-3/4 md:w-1/3 relative overflow-hidden">
         <div>
           <img
-            src={detalhes.urlFoto}
+            src={detalhes.urlFoto == null ? 'https://th.bing.com/th/id/OIP.z4b-8zmm_IHANxApPVXCCQHaHa?rs=1&pid=ImgDetMain' : detalhes.urlFoto}
             alt={detalhes.nome}
             className="w-full max-w-md mx-auto rounded-lg shadow-md"
           />

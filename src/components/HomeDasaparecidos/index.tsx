@@ -18,7 +18,7 @@ interface Desaparecido {
 export default function HomeDasaparecidos() {
   const [desaparecidos, setDesaparecidos] = useState<Desaparecido[]>([]);
   const [paginaAtual, setPaginaAtual] = useState(1);
-  const [itensPorPagina] = useState(6); // Parametriza a quantidades de cards por página
+  const [itensPorPagina] = useState(10); // Parametriza a quantidades de cards por página
   const navigate = useNavigate();
 
   // Estados para filtros
