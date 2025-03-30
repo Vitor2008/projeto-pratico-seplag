@@ -1,8 +1,8 @@
 import { useLocation } from "react-router-dom";
-import { useState } from "react";
 import { formatarData } from "../../helper/formatarData";
-import { Link } from "react-router-dom";
 import { enviarInformacoes } from "../../services/api";
+import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
 
 export default function Detalhes() {
   const location = useLocation();
@@ -13,6 +13,93 @@ export default function Detalhes() {
   if (!detalhes) {
     return <div className="p-4 text-red-500">Nenhuma informação encontrada!</div>;
   }
+
+  const abrirModal = () => {
+    const modalContent = document.createElement("div");
+    modalContent.innerHTML = `
+      <div class="grid grid-cols-1 gap-4 text-left">
+        <div>
+          <label class="block font-medium text-gray-700"><strong>Informações:</strong></label>
+          <textarea id="campoInfo" class="swal2-textarea border rounded-md p-1 m-0" placeholder="Digite as informações aqui..."></textarea>
+          <p id="erroInfo" class="text-red-500 text-sm hidden">Campo obrigatório!</p>
+        </div>
+        <div class="grid grid-cols-2">
+          <div>
+            <label class="block font-medium text-gray-700">Data informação:</label>
+            <input type="date" id="campoData" class="swal2-input w-full border rounded-md p-2 m-0">
+            <p id="erroData" class="text-red-500 text-sm hidden">Campo obrigatório!</p>
+          </div>
+          <div>
+            <label class="block font-medium text-gray-700">Enviar foto:</label>
+            <input type="file" id="campoFoto" accept="image/png, image/jpeg, image/jpg" class="border rounded-md p-2 w-full">
+            <div id="previewContainer" class="mt-2 hidden">
+              <img id="previewImage" class="max-w-full h-auto rounded-md shadow-md"/>
+            </div>
+          </div>
+        </div>
+      </div>
+    `;
+  
+    window.Swal.fire({
+      title: "Enviar informações:",
+      showCancelButton: true,
+      confirmButtonColor: "oklch(0.546 0.245 262.881)",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Enviar",
+      cancelButtonText: "Cancelar",
+      html: modalContent,
+      preConfirm: async () => { 
+        const info = document.getElementById("campoInfo") as HTMLTextAreaElement;
+        const data = document.getElementById("campoData") as HTMLInputElement;
+        const erroInfo = document.getElementById("erroInfo") as HTMLElement;
+        const erroData = document.getElementById("erroData") as HTMLElement;
+      
+        let valid = true;
+      
+        if (!info.value.trim()) {
+          erroInfo.classList.remove("hidden");
+          valid = false;
+        } else {
+          erroInfo.classList.add("hidden");
+        }
+      
+        if (!data.value.trim()) {
+          erroData.classList.remove("hidden");
+          valid = false;
+        } else {
+          erroData.classList.add("hidden");
+        }
+      
+        if (!valid) return false; 
+        const dados = {
+          informacao: info.value.trim(),
+          dataInformacao: data.value.trim(),
+        };
+
+        const result = await enviarInformacoes(dados);
+
+        if (!result) {
+          Swal.fire({
+            title: "Erro ao enviar informações!",
+            text: "Houve um problema ao enviar as informações.",
+            icon: "error",
+            confirmButtonText: "Ok",
+          });
+          return false;
+        }
+  
+        return true;
+      }
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire({
+          title: "Informações Enviadas!",
+          confirmButtonColor: "oklch(0.546 0.245 262.881)",
+          icon: "success"
+        });
+      }
+    });
+  };
 
   return (
     <>
@@ -29,7 +116,7 @@ export default function Detalhes() {
 
           <h1 className="text-azul-1 font-semibold uppercase mt-4 mb-2"><strong>Última Ocorrência: </strong></h1>
 
-          <div className="grid grid-cols-2 md:grid-cols-2 sm:grid-cols-1 gap-2">
+          <div className="grid grid-cols-1 md:grid-cols-2 sm:grid-cols-1 gap-2">
             <div>
               <label className="block"><strong>Status:</strong></label>
               <input type="text" className={`w-full text-sm rounded-md py-1 px-2 shadow-sm border border-gray-300 font-semibold uppercase ${detalhes.ultimaOcorrencia.dataLocalizacao === null ? "text-red-600" : "text-green-600"}`} value={detalhes.ultimaOcorrencia.dataLocalizacao === null ? "Desaparecido" : "Encontrado"} disabled />
@@ -102,7 +189,7 @@ export default function Detalhes() {
             </a>
             )}
 
-            <button className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition cursor-pointer">
+            <button onClick={abrirModal} className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition cursor-pointer">
               Enviar Informações
             </button>
           </div>

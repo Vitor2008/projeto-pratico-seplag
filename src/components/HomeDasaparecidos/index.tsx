@@ -21,7 +21,6 @@ export default function HomeDasaparecidos() {
   const [itensPorPagina] = useState(10); // Parametriza a quantidades de cards por página
   const navigate = useNavigate();
 
-  // Estados para filtros
   const [nome, setNome] = useState("");
   const [faixaIdadeInicial, setIdadeMin] = useState("");
   const [faixaIdadeFinal, setIdadeMax] = useState("");
