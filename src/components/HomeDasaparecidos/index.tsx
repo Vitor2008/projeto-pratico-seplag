@@ -157,13 +157,13 @@ export default function HomeDasaparecidos() {
             onClick={() => handleDetalhesClick(desaparecido.id)}
           >
             <img
-              src={desaparecido.urlFoto == null 
+              src={desaparecido.urlFoto === null 
                 ? 'https://th.bing.com/th/id/OIP.z4b-8zmm_IHANxApPVXCCQHaHa?rs=1&pid=ImgDetMain' : desaparecido.urlFoto}
               alt={desaparecido.nome}
               className="w-full h-48 object-cover rounded-md mb-4"
             />
             <h2 className="text-lg font-semibold uppercase">{desaparecido.nome}</h2>
-            <h2 className={`text-lg font-semibold uppercase ${desaparecido.ultimaOcorrencia.dataLocalizacao == null ? "text-red-600": "text-green-600"}`}>{desaparecido.ultimaOcorrencia.dataLocalizacao == null ? "Desaparecido": "Encontrado"}</h2>
+            <h2 className={`text-lg font-semibold uppercase ${desaparecido.ultimaOcorrencia.dataLocalizacao === null ? "text-red-600": "text-green-600"}`}>{desaparecido.ultimaOcorrencia.dataLocalizacao === null ? "Desaparecido": "Localizado"}</h2>
             <p>{desaparecido.idade} anos</p>
             <p className={"mt-1 font-bold"}>
               Local desaparecimento:

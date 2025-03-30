@@ -58,6 +58,26 @@ export async function buscarDesaparecidosComFiltro(filtros: {
   }
 };
 
+export async function enviarInformacoes(dados) {
+  try {
+    const response = await fetch("https://abitus-api.geia.vip/v1/ocorrencias/informacoes-desaparecido", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(dados),
+    });
+
+    if (!response.ok) {
+      throw new Error(`Erro ao enviar informações: ${response.statusText}`);
+    }
+
+    return await response.json();
+  } catch (error) {
+    console.error("Erro ao enviar informações do desaparecido:", error);
+    return null;
+  }
+};
 
 
 // export async function buscarDesaparecidos() {

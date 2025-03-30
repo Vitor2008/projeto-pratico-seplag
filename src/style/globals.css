@@ -13,6 +13,7 @@
   --color-separate: #cccccc;
   --color-input-out: #ececec;
   --color-cinza: #d0d7df;
+  --color-gray-200:  oklch(0.928 0.006 264.531);
   --box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.1);
 }
 
@@ -54,6 +55,10 @@ body {
   background-color: var(--color-azul-07);
 }
 
+.text-azul-1{
+  color: var(--color-azul-01);
+}
+
 .text-azul-3{
    color: var(--color-azul-03);
 }
@@ -74,4 +79,20 @@ header svg{
 .hover-card:hover{
   background-color: var(--color-azul-01);
   color: white;
+}
+
+.hover-btn:hover{
+  color: var(--color-azul-03);
+}
+
+.hover-btn-secundario:hover{
+  color: var(--color-azul-07);
+}
+
+.btn-voltar:hover {
+  color: var(--color-azul-02);
+}
+
+.bg-color-gray{
+  background-color: var(--color-gray-200);
 }
