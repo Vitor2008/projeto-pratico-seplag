@@ -58,13 +58,12 @@ A divisão das responsabilidades está organizada da seguinte maneira:
 - [<img align="center" alt="TypeScript" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/typescript/typescript-original.svg"> TypeScript](https://www.typescriptlang.org/)
 - [<img align="center" alt="Tailwind" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/tailwindcss/tailwindcss-original.svg"> Tailwind CSS](https://tailwindcss.com/)
 - [<img align="center" alt="Vite" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/vitejs/vitejs-original.svg"> Vite](https://vitejs.dev/)
-- [<img align="center" alt="Docker" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/docker/docker-original.svg"> Docker](https://www.docker.com/)
 
 # :hammer_and_pick: Ferramentas
 
 - [<img align="center" alt="VSCode" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/vscode/vscode-original.svg"> Visual Studio Code](https://code.visualstudio.com/)
 - [<img align="center" alt="Git" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/git/git-original.svg"> Git](https://www.git.com/)
-- [<img align="center" alt="GitHub" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/github/github-original.svg"> GitHub](https://github.com/)
+- [<img align="center" alt="GitHub" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/github/github-original.svg"> GitHub](https://git-scm.com/)
 
 # :rocket: Como rodar o projeto
 
@@ -76,7 +75,7 @@ A divisão das responsabilidades está organizada da seguinte maneira:
 ### **Passo a passo:**
 ```bash
 # Clone este repositório
-$ git clone https://github.com/seu-usuario/nome-do-repositorio.git
+$ git clone https://github.com/Vitor2008/projeto-pratico-seplag.git
 
 # Acesse a pasta do projeto
 $ cd nome-do-repositorio
