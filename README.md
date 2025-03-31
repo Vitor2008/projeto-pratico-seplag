@@ -1,52 +1,105 @@
-# Projeto Prárico Seplag
-Projeto prático para o processo seletivo da Seplag. 
+# Projeto Prático Seplag
+Portal de Pessoas Desaparecidas
 
 # Descrição do Projeto
-O projeto é uma SPA (Single Page Application) desenvolvida para exibir informações sobre pessoas desaparecidas, consumindo a API pública da Polícia Judiciária Civil de Mato Grosso. O sistema permite visualizar detalhes dos desaparecidos e enviar novas informações sobre os casos.
+Portal Web para consulta de pessoas desaparecidas, consumindo a API pública da **Polícia Judiciária Civil de Mato Grosso**. A aplicação exibe informações detalhadas sobre desaparecidos e permite a interação dos usuários para fornecer novos dados sobre os casos.
 
-## Padrão de Arquitetura
-- Componentização: Os componentes são organizados dentro da pasta components, tornando a estrutura modular e reutilizável.
+<table>
+<thead>
+<tr align="center">
+<th><img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/edge/edge_48x48.png" width="24px" height="24px"></th>
+<th><img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/firefox/firefox_48x48.png" width="24px" height="24px"></th>
+<th><img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/chrome/chrome_48x48.png" width="24px" height="24px"></th>
+</tr>
+</thead>
+<tbody>
+<tr align="center">
+<td>Edge (última versão)</td>
+<td>Firefox (última versão)</td>
+<td>Chrome (última versão)</td>
+</tr>
+</tbody>
+</table>
 
-## Design Patner
-- Modularização: O código é organizado em módulos reutilizáveis, separando UI, lógica de negócio e chamadas à API.
-- Factory Pattern (parcialmente): O serviço de API (api.tsx) encapsula chamadas HTTP, permitindo reutilização e fácil manutenção.
-- Observer Pattern (React Hooks - useEffect, useState):  A aplicação reage a mudanças de estado para atualizar a UI dinamicamente.
-- Lazy Loading (React Suspense & Lazy - previsto): Para otimizar o carregamento, os componentes podem ser carregados sob demanda.
+## Padrão
+- SPA (Single Page Application)
+- Arquitetura em Camadas
+
+## Design Patterns
+- Modularização
+- Factory Pattern
+- Observer Pattern (React Hooks)
+- Lazy Loading
 
 # :compression: Estrutura
-A divisão das responsabilidades estão separadas por pastas.
+A divisão das responsabilidades está organizada da seguinte maneira:
 
-#### Components
-- Os componentes com as páginas web.
+#### components/
+- Contém os componentes reutilizáveis e as páginas principais da aplicação.
 
-#### Routes
-- Gerenciamento de rotas da aplicação.
+#### fonts/
+- Armazena os arquivos de fontes utilizadas no projeto.
 
-#### Services
-- Comunicação com a API externa.
+#### helper/
+- Contém funções auxiliares, como formatação de dados.
 
-#### Styles
-- Estilos globais da aplicação.
+#### routes/
+- Responsável pelo gerenciamento das rotas da aplicação.
 
-#### Helpers
-- Destinados a métodos auxiliares.
+#### services/
+- Define os serviços responsáveis por chamar os endpoints da API externa.
 
+#### styles/
+- Contém os estilos globais da aplicação.
 
 # :hammer_and_wrench: Tecnologias
 
-- [<img align="center" alt="ASP.NET" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/dotnetcore/dotnetcore-original.svg"> ASP.NET Core 3.1](https://dotnet.microsoft.com/download/dotnet/3.1)
-- [<img align="center" alt="React" height="30" width="40" src="https://github.com/devicons/devicon/blob/master/icons/react/react-original.svg"> React])
+- [<img align="center" alt="React" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original.svg"> React](https://react.dev/)
+- [<img align="center" alt="TypeScript" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/typescript/typescript-original.svg"> TypeScript](https://www.typescriptlang.org/)
+- [<img align="center" alt="Tailwind" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/tailwindcss/tailwindcss-original.svg"> Tailwind CSS](https://tailwindcss.com/)
+- [<img align="center" alt="Vite" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/vitejs/vitejs-original.svg"> Vite](https://vitejs.dev/)
+- [<img align="center" alt="Docker" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/docker/docker-original.svg"> Docker](https://www.docker.com/)
 
 # :hammer_and_pick: Ferramentas
 
-- [<img align="center" alt="VisualStudio" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/visualstudio/visualstudiocod-plain.svg"> Visual Studio Code](https://code.visualstudio.com/)
+- [<img align="center" alt="VSCode" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/vscode/vscode-original.svg"> Visual Studio Code](https://code.visualstudio.com/)
+- [<img align="center" alt="Git" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/git/git-original.svg"> Git](https://www.git.com/)
+- [<img align="center" alt="GitHub" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/github/github-original.svg"> GitHub](https://github.com/)
 
+# :rocket: Como rodar o projeto
+
+### **Pré-requisitos:**
+- Ter o **Node.js** instalado ([Download](https://nodejs.org/))
+- Ter o **npm** ou **yarn** instalado
+- Ter o **Git** instalado ([Download](https://git-scm.com/))
+
+### **Passo a passo:**
+```bash
+# Clone este repositório
+$ git clone https://github.com/seu-usuario/nome-do-repositorio.git
+
+# Acesse a pasta do projeto
+$ cd nome-do-repositorio
+
+# Instale as dependências
+$ npm install  # ou yarn install
+
+# Inicie o servidor de desenvolvimento
+$ npm run dev  # ou yarn dev
+```
+
+O projeto estará rodando no endereço: `http://localhost:5173/`
 
 # :star: Contribuidores
 <table>
 <tr>
 <td align="center">
-<a href="http://gitlab.ci.redeflex.com.br/vitor.almeida"><img style="border-radius: 50%;" src="http://gitlab.ci.redeflex.com.br/uploads/-/system/user/avatar/7/avatar.png?width=400" width="100px;" alt=""/><br /><b>Vitor Almeida</b></a>
+<a href="https://github.com/Vitor2008"><img style="border-radius: 50%;" src="https://github.com/Vitor2008.png" width="100px;" alt="Vitor Almeida"/><br /><b>Vitor Almeida</b></a>
 </td>
 </tr>
 </table>
+
+---
+
+Qualquer dúvida ou sugestão, fique à vontade para abrir uma issue! 🚀
+
