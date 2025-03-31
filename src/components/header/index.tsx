@@ -14,7 +14,7 @@ const Header = () => {
         <div className="mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-16 bg-cinza">
           <div className='inner-header'>
               {/* Menu Desktop */}
-            <nav className="hidden md:flex p-4">
+            <nav className="hidden lg:flex p-4">
               <Link to="/" className="text-azul-1 hover-btn transition uppercase border-r-2 pl-4 pr-4 text-sm">Página Inicial</Link>
               <Link to="/" className="text-azul-1 hover-btn transition uppercase border-r-2 pl-4 pr-4 text-sm">Institucional</Link>
               <Link to="/" className="text-azul-1 hover-btn transition uppercase border-r-2 pl-4 pr-4 text-sm">Sobre</Link>
@@ -26,7 +26,7 @@ const Header = () => {
 
             {/* Botão Menu Mobile */}
             <button
-              className="md:hidden focus:outline-none"
+              className="lg:hidden focus:outline-none"
               onClick={() => setMenuOpen(!menuOpen)}
             >
               <svg className="w-[50px]" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
@@ -42,7 +42,7 @@ const Header = () => {
 
         {/* Menu Mobile */}
         <nav
-          className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out transform origin-top 
+          className={`lg:hidden overflow-hidden transition-all duration-300 ease-in-out transform origin-top 
             ${menuOpen ? 'scale-y-100 opacity-100 max-h-96' : 'scale-y-0 opacity-0 max-h-0'}
             bg-azul-4 text-white border-t border-gray-200 px-4 py-2 space-y-2`}
           >

@@ -74,7 +74,7 @@ export default function HomeDasaparecidos() {
         <h1 className="text-lg md:text-xl font-bold text-white mb-4 bg-azul-1 p-1 text-center uppercase">
           Filtros
         </h1>
-        <form className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <form className="grid grid-cols-1 lg:grid-cols-3 gap-4">
           {/* Nome */}
           <div>
             <label className="block text-gray-700 font-semibold mb-1">Nome</label>

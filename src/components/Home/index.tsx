@@ -16,7 +16,7 @@ const Home = () => {
   }, [images.length]);
 
   return (
-    <div className="flex flex-col md:flex-row items-center justify-between p-10 gap-10">
+    <div className="flex flex-col lg:flex-row items-center justify-between p-10 gap-10">
       <div className="w-full md:w-1/2 md:text-left">
         <h1 className="text-lg md:text-xl font-bold text-white mb-4 bg-azul-1 p-1 uppercase">
           Busca Por Desaparecidos
@@ -33,11 +33,12 @@ const Home = () => {
           chances de reencontro. Junte-se a essa missão e contribua para trazer esperança.
         </p>
       </div>
-      <div className="w-full md:w-1/2 relative overflow-hidden">
-        <div
-          className="w-full h-64 md:h-96 bg-cover bg-center transition-all duration-500"
-          style={{ backgroundImage: `url(${images[currentSlide]})` }}
-        ></div>
+      <div className="w-full md:w-1/2 relative overflow-hidden p-2 bg-azul-1">
+        <img
+            src={images[currentSlide]}
+            alt="Slide"
+            className="w-full h-64 md:h-96 object-cover transition-all duration-500"
+        />
       </div>
     </div>
   );
