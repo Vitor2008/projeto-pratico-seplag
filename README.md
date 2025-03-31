@@ -4,23 +4,6 @@ Portal de Pessoas Desaparecidas
 # Descrição do Projeto
 Portal Web para consulta de pessoas desaparecidas, consumindo a API pública da **Polícia Judiciária Civil de Mato Grosso**. A aplicação exibe informações detalhadas sobre desaparecidos e permite a interação dos usuários para fornecer novos dados sobre os casos.
 
-<table>
-<thead>
-<tr align="center">
-<th><img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/edge/edge_48x48.png" width="24px" height="24px"></th>
-<th><img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/firefox/firefox_48x48.png" width="24px" height="24px"></th>
-<th><img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/chrome/chrome_48x48.png" width="24px" height="24px"></th>
-</tr>
-</thead>
-<tbody>
-<tr align="center">
-<td>Edge (última versão)</td>
-<td>Firefox (última versão)</td>
-<td>Chrome (última versão)</td>
-</tr>
-</tbody>
-</table>
-
 ## Padrão
 - SPA (Single Page Application)
 - Arquitetura em Camadas
@@ -31,7 +14,7 @@ Portal Web para consulta de pessoas desaparecidas, consumindo a API pública da 
 - Observer Pattern (React Hooks)
 - Lazy Loading
 
-# :compression: Estrutura
+# :open_file_folder: Estrutura
 A divisão das responsabilidades está organizada da seguinte maneira:
 
 #### components/
@@ -78,7 +61,7 @@ A divisão das responsabilidades está organizada da seguinte maneira:
 $ git clone https://github.com/Vitor2008/projeto-pratico-seplag.git
 
 # Acesse a pasta do projeto
-$ cd nome-do-repositorio
+$ cd projeto-pratico-seplag
 
 # Instale as dependências
 $ npm install  # ou yarn install
