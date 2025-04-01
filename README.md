@@ -1,6 +1,11 @@
 # Projeto Prático Seplag
 Portal de Pessoas Desaparecidas
 
+## Dados candidato:
+- Inscrição: 8687
+- Nome: Vitor Gabriel Oliveira de Almeida
+- E-mail: vial.almeida@icloud.com
+
 # Descrição do Projeto
 Portal Web para consulta de pessoas desaparecidas, consumindo a API pública da **Polícia Judiciária Civil de Mato Grosso**. A aplicação exibe informações detalhadas sobre desaparecidos e permite a interação dos usuários para fornecer novos dados sobre os casos.
 
@@ -41,6 +46,8 @@ A divisão das responsabilidades está organizada da seguinte maneira:
 - [<img align="center" alt="TypeScript" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/typescript/typescript-original.svg"> TypeScript](https://www.typescriptlang.org/)
 - [<img align="center" alt="Tailwind" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/tailwindcss/tailwindcss-original.svg"> Tailwind CSS](https://tailwindcss.com/)
 - [<img align="center" alt="Vite" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/vitejs/vitejs-original.svg"> Vite](https://vitejs.dev/)
+- [<img align="center" alt="Sweet Alert" height="30" width="40" src="https://raw.githubusercontent.com/sweetalert2/sweetalert2/master/assets/swal2-logo.png"> Sweet Alert](https://sweetalert2.github.io/)
+
 
 # :hammer_and_pick: Ferramentas
 
