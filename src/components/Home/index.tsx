@@ -3,9 +3,9 @@ import { useState, useEffect } from "react";
 const Home = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const images = [
-    "./public/img/1.jpeg",
-    "./public/img/2.jpeg",
-    "./public/img/3.jpeg",
+    "./public/img/cartaz1.jpg",
+    "./public/img/cartaz2.jpg",
+    "./public/img/cartaz3.jpg",
   ];
 
   useEffect(() => {
@@ -36,7 +36,7 @@ const Home = () => {
       <div className="w-full md:w-1/2 relative overflow-hidden p-2 bg-azul-1">
         <img
             src={images[currentSlide]}
-            alt="Slide"
+            alt="Slide desaparecidos"
             className="w-full h-64 md:h-96 object-cover transition-all duration-500"
         />
       </div>

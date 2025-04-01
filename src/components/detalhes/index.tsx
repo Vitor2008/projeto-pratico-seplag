@@ -14,24 +14,113 @@ export default function Detalhes() {
     return <div className="p-4 text-red-500">Nenhuma informação encontrada!</div>;
   }
 
+  // const abrirModal = () => {
+  //   const modalContent = document.createElement("div");
+  //   modalContent.innerHTML = `
+  //     <div class="grid grid-cols-1 gap-4 text-left">
+  //       <div>
+  //         <label class="block font-medium text-gray-700"><strong>Informações:</strong></label>
+  //         <textarea id="campoInfo" class="swal2-textarea border rounded-md p-1 m-0" placeholder="Digite as informações aqui..."></textarea>
+  //         <p id="erroInfo" class="text-red-500 text-sm hidden">Campo obrigatório!</p>
+  //       </div>
+  //       <div class="grid grid-cols-2">
+  //         <div>
+  //           <label class="block font-medium text-gray-700">Data informação:</label>
+  //           <input type="date" id="campoData" class="swal2-input w-full border rounded-md p-2 m-0">
+  //           <p id="erroData" class="text-red-500 text-sm hidden">Campo obrigatório!</p>
+  //         </div>
+  //         <div>
+  //           <label class="block font-medium text-gray-700">Enviar foto:</label>
+  //           <input type="file" id="campoFoto" accept="image/png, image/jpeg, image/jpg" class="border rounded-md p-2 w-full">
+  //           <div id="previewContainer" class="mt-2 hidden">
+  //             <img id="previewImage" class="max-w-full h-auto rounded-md shadow-md"/>
+  //           </div>
+  //         </div>
+  //       </div>
+  //     </div>
+  //   `;
+  
+  //   window.Swal.fire({
+  //     title: "Enviar informações:",
+  //     showCancelButton: true,
+  //     confirmButtonColor: "oklch(0.546 0.245 262.881)",
+  //     cancelButtonColor: "#d33",
+  //     confirmButtonText: "Enviar",
+  //     cancelButtonText: "Cancelar",
+  //     html: modalContent,
+  //     preConfirm: async () => { 
+  //       const info = document.getElementById("campoInfo") as HTMLTextAreaElement;
+  //       const data = document.getElementById("campoData") as HTMLInputElement;
+  //       const erroInfo = document.getElementById("erroInfo") as HTMLElement;
+  //       const erroData = document.getElementById("erroData") as HTMLElement;
+      
+  //       let valid = true;
+      
+  //       if (!info.value.trim()) {
+  //         erroInfo.classList.remove("hidden");
+  //         valid = false;
+  //       } else {
+  //         erroInfo.classList.add("hidden");
+  //       }
+      
+  //       if (!data.value.trim()) {
+  //         erroData.classList.remove("hidden");
+  //         valid = false;
+  //       } else {
+  //         erroData.classList.add("hidden");
+  //       }
+      
+  //       if (!valid) return false; 
+  //       const dados = {
+  //         informacao: info.value.trim(),
+  //         data: data.value.trim(),
+  //         ocorrenciaId: detalhes.ultimaOcorrencia.ocoId,
+  //         id: detalhes.id
+  //       };
+
+  //       const result = await enviarInformacoes(dados);
+
+  //       if (!result) {
+  //         Swal.fire({
+  //           title: "Erro ao enviar informações!",
+  //           text: "Houve um problema ao enviar as informações.",
+  //           icon: "error",
+  //           confirmButtonText: "Ok",
+  //         });
+  //         return false;
+  //       }
+  
+  //       return true;
+  //     }
+  //   }).then((result) => {
+  //     if (result.isConfirmed) {
+  //       Swal.fire({
+  //         title: "Informações Enviadas!",
+  //         confirmButtonColor: "oklch(0.546 0.245 262.881)",
+  //         icon: "success"
+  //       });
+  //     }
+  //   });
+  // };
+
   const abrirModal = () => {
     const modalContent = document.createElement("div");
     modalContent.innerHTML = `
       <div class="grid grid-cols-1 gap-4 text-left">
         <div>
-          <label class="block font-medium text-gray-700"><strong>Informações:</strong></label>
+          <label class="block font-medium text-gray-700"><strong>Informações:*</strong></label>
           <textarea id="campoInfo" class="swal2-textarea border rounded-md p-1 m-0" placeholder="Digite as informações aqui..."></textarea>
           <p id="erroInfo" class="text-red-500 text-sm hidden">Campo obrigatório!</p>
         </div>
         <div class="grid grid-cols-2">
           <div>
-            <label class="block font-medium text-gray-700">Data informação:</label>
-            <input type="date" id="campoData" class="swal2-input w-full border rounded-md p-2 m-0">
+            <label class="block font-medium text-gray-700">Data informação:*</label>
+            <input type="date" id="campoData" class="swal2-input w-full border rounded-md p-2 m-0 cursor-pointer">
             <p id="erroData" class="text-red-500 text-sm hidden">Campo obrigatório!</p>
           </div>
           <div>
             <label class="block font-medium text-gray-700">Enviar foto:</label>
-            <input type="file" id="campoFoto" accept="image/png, image/jpeg, image/jpg" class="border rounded-md p-2 w-full">
+            <input type="file" id="campoFoto" accept="image/png, image/jpeg, image/jpg" class="border rounded-md p-2 w-full cursor-pointer">
             <div id="previewContainer" class="mt-2 hidden">
               <img id="previewImage" class="max-w-full h-auto rounded-md shadow-md"/>
             </div>
@@ -48,36 +137,47 @@ export default function Detalhes() {
       confirmButtonText: "Enviar",
       cancelButtonText: "Cancelar",
       html: modalContent,
-      preConfirm: async () => { 
+      preConfirm: async () => {
         const info = document.getElementById("campoInfo") as HTMLTextAreaElement;
         const data = document.getElementById("campoData") as HTMLInputElement;
         const erroInfo = document.getElementById("erroInfo") as HTMLElement;
         const erroData = document.getElementById("erroData") as HTMLElement;
-      
+        const erroAnexo = document.getElementById("erroAnexo") as HTMLElement;
+        const campoFoto = document.getElementById("campoFoto") as HTMLInputElement;
+        
         let valid = true;
-      
+        let anexos: File[] = [];
+  
         if (!info.value.trim()) {
           erroInfo.classList.remove("hidden");
           valid = false;
         } else {
           erroInfo.classList.add("hidden");
         }
-      
+  
         if (!data.value.trim()) {
           erroData.classList.remove("hidden");
           valid = false;
         } else {
           erroData.classList.add("hidden");
         }
-      
-        if (!valid) return false; 
+  
+        if (campoFoto.files && campoFoto.files.length > 0) {
+          anexos = Array.from(campoFoto.files); 
+        }
+  
+        if (!valid) return false;
+  
         const dados = {
           informacao: info.value.trim(),
-          dataInformacao: data.value.trim(),
+          data: data.value.trim(),
+          ocoId: detalhes.ultimaOcorrencia.ocoId,
+          id: detalhes.id,
+          anexos: anexos,
         };
-
+  
         const result = await enviarInformacoes(dados);
-
+  
         if (!result) {
           Swal.fire({
             title: "Erro ao enviar informações!",
@@ -99,8 +199,8 @@ export default function Detalhes() {
         });
       }
     });
-  };
-
+  };  
+  
   return (
     <>
       <Link to="/" className="pl-10 mt-8 flex cursor-pointer btn-voltar">

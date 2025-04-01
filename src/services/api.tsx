@@ -37,7 +37,6 @@ export async function buscarDesaparecidosComFiltro(filtros: {
   try {
     const url = new URL("https://abitus-api.geia.vip/v1/pessoas/aberto/filtro");
 
-    // Adiciona os filtros se existirem
     Object.entries(filtros).forEach(([chave, valor]) => {
       if (valor !== undefined && valor !== null) {
         url.searchParams.append(chave, valor.toString());
@@ -58,18 +57,40 @@ export async function buscarDesaparecidosComFiltro(filtros: {
   }
 };
 
-export async function enviarInformacoes(dados) {
+export const enviarInformacoes = async (dados: {
+  informacao: string;
+  data: string;
+  ocoId: number;
+  id: number;
+  anexos?: File[]; 
+}) => {
   try {
+    const { anexos } = dados;
+
+    const formData = new FormData();
+
+    for (const [key, value] of Object.entries(dados)) {
+      formData.append(key, value as string);
+    }
+
+    if (anexos && anexos.length > 0) {
+      anexos.forEach((anexo, index) => {
+        formData.append(`anexos[${index}]`, anexo); 
+      });
+    }
+
+    console.log("Enviando para API:", formData);
+
     const response = await fetch("https://abitus-api.geia.vip/v1/ocorrencias/informacoes-desaparecido", {
       method: "POST",
       headers: {
-        "Content-Type": "application/json",
       },
-      body: JSON.stringify(dados),
+      body: formData,
     });
 
     if (!response.ok) {
-      throw new Error(`Erro ao enviar informações: ${response.statusText}`);
+      const errorText = await response.text();
+      throw new Error(`Erro ao enviar informações: ${errorText}`);
     }
 
     return await response.json();
@@ -78,3 +99,6 @@ export async function enviarInformacoes(dados) {
     return null;
   }
 };
+
+
+
