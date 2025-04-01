@@ -1,12 +1,10 @@
 # Projeto Prático Seplag
+Portal de Pessoas Desaparecidas
 
-# Dados candidato:
-Inscrição: 8687
-Nome: Vitor Gabriel Oliveira de Almeida
-E-mail: vial.almeida@icloud.com
-
-
-# Portal de Pessoas Desaparecidas
+## Dados candidato:
+- Inscrição: 8687
+- Nome: Vitor Gabriel Oliveira de Almeida
+- E-mail: vial.almeida@icloud.com
 
 # Descrição do Projeto
 Portal Web para consulta de pessoas desaparecidas, consumindo a API pública da **Polícia Judiciária Civil de Mato Grosso**. A aplicação exibe informações detalhadas sobre desaparecidos e permite a interação dos usuários para fornecer novos dados sobre os casos.
