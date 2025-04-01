@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { buscarDesaparecidos, buscarDetalheDesaparecido, buscarDesaparecidosComFiltro } from "../../services/api";
 
 interface Desaparecido {
@@ -21,28 +22,37 @@ export default function HomeDasaparecidos() {
   const [itensPorPagina] = useState(10); // Parametriza a quantidades de cards por página
   const navigate = useNavigate();
 
-  const [nome, setNome] = useState("");
-  const [faixaIdadeInicial, setIdadeMin] = useState("");
-  const [faixaIdadeFinal, setIdadeMax] = useState("");
-  const [sexo, setSexo] = useState("");
-  const [status, setStatus] = useState("");
+  const location = useLocation();
+
+  const [nome, setNome] = useState(location.state?.nome || "");
+  const [faixaIdadeInicial, setIdadeMin] = useState(location.state?.faixaIdadeInicial || "");
+  const [faixaIdadeFinal, setIdadeMax] = useState(location.state?.faixaIdadeFinal || "");
+  const [sexo, setSexo] = useState(location.state?.sexo || "");
+  const [status, setStatus] = useState(location.state?.status || "");
+  
 
   useEffect(() => {
     const obterDesaparecidos = async () => {
       const dados = await buscarDesaparecidos();
       setDesaparecidos(dados);
     };
+    
     obterDesaparecidos();
-  }, []);
+
+    // Se houver filtros salvos no state, aciona a pesquisa automaticamente
+    if (location.state) {
+      handlePesquisar();
+    }
+  }, [location.state]);
 
   const handlePesquisar = async () => {
     try {
       const filtros = {
         nome: nome,
-        faixaIdadeInicial: faixaIdadeInicial,
-        faixaIdadeFinal: faixaIdadeFinal,
-        sexo: sexo,
-        status: status,
+        ffaixaIdadeInicial: faixaIdadeInicial ? Number(faixaIdadeInicial) : undefined,
+        faixaIdadeFinal: faixaIdadeFinal ? Number(faixaIdadeFinal) : undefined,
+        sexo: sexo as "MASCULINO" | "FEMININO" | undefined,
+        status: status as "DESAPARECIDO" | "LOCALIZADO" | undefined,
       };
 
       const dadosFiltrados = await buscarDesaparecidosComFiltro(filtros);
@@ -56,7 +66,7 @@ export default function HomeDasaparecidos() {
   const handleDetalhesClick = async (id: number) => {
     try {
       const detalhes = await buscarDetalheDesaparecido(id);
-      navigate(`/detalhes/${id}`, { state: { detalhes } });
+      navigate(`/detalhes/${id}`, { state: { detalhes, nome, faixaIdadeInicial, faixaIdadeFinal, sexo, status } });
     } catch (error) {
       console.error("Erro ao buscar detalhes:", error);
     }
@@ -148,6 +158,8 @@ export default function HomeDasaparecidos() {
         Pessoas Desaparecidas
       </h1>
 
+     {desaparecidosPaginados.length < 1 ?
+      <p className="mt-5 text-center text-lg font-bold text-red-500">Nenhuma informação encontrada!</p> : 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 bg-cinza p-4">
         {desaparecidosPaginados.map((desaparecido) => (
           <div
@@ -171,6 +183,7 @@ export default function HomeDasaparecidos() {
           </div>
         ))}
       </div>
+     }
 
       <p className="text-lg font-bold text-gray-700 mt-4 text-azul-4">
         Total encontrados: {desaparecidos.length}

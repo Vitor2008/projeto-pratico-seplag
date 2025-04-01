@@ -44,7 +44,7 @@ export async function buscarDesaparecidosComFiltro(filtros: {
     });
 
     const resposta = await fetch(url.toString());
-    
+
     if (!resposta.ok) {
       throw new Error("Erro ao buscar dados da API");
     }
@@ -78,8 +78,6 @@ export const enviarInformacoes = async (dados: {
         formData.append(`anexos[${index}]`, anexo); 
       });
     }
-
-    console.log("Enviando para API:", formData);
 
     const response = await fetch("https://abitus-api.geia.vip/v1/ocorrencias/informacoes-desaparecido", {
       method: "POST",

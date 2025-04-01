@@ -8,7 +8,6 @@ const Header = () => {
     <header className="shadow-md sticky top-0 z-50 bg-azul-7">
       <div className='flex p-4 items-center px-20 inner-header text-white'>
         <img className='w-60 rounded-full' src='https://seplag.mt.gov.br/img/LOGO%20SEPLAG%20-%20BRANCO%20(T)%20VAZADO.png'/>
-        {/* <h1 className="text-xl font-bold">SEPLAG</h1> */}
       </div>
       {/* Barra de Navegação */}
         <div className="mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-16 bg-cinza">
