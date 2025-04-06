@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import { buscarDesaparecidos, buscarDetalheDesaparecido, buscarDesaparecidosComFiltro } from "../../services/api";
+import FotoPessoa  from '../../helper/FotoPessoa';
+
 
 interface Desaparecido {
   id: number;
@@ -167,9 +169,8 @@ export default function HomeDasaparecidos() {
             className="bg-white shadow-md rounded-lg p-4 cursor-pointer hover:shadow-lg hover-card transition"
             onClick={() => handleDetalhesClick(desaparecido.id)}
           >
-            <img
-              src={desaparecido.urlFoto === null 
-                ? 'https://th.bing.com/th/id/OIP.z4b-8zmm_IHANxApPVXCCQHaHa?rs=1&pid=ImgDetMain' : desaparecido.urlFoto}
+            <FotoPessoa 
+              url={desaparecido.urlFoto}
               alt={desaparecido.nome}
               className="w-full h-48 object-cover rounded-md mb-4"
             />

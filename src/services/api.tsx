@@ -1,6 +1,9 @@
+import config from '../helper/config';
+
+
 export async function buscarDesaparecidos() {
     try {
-      const resposta = await fetch("https://abitus-api.geia.vip/v1/pessoas/aberto");
+      const resposta = await fetch(`${config.api.buscarDesaparecidos}`);
       if (!resposta.ok) {
         throw new Error("Erro ao buscar dados da API");
       }
@@ -10,11 +13,11 @@ export async function buscarDesaparecidos() {
       console.error("Erro ao buscar desaparecidos:", erro);
       return []; 
     }
-  }
+};
 
 export const buscarDetalheDesaparecido = async (id: number) => {
   try {
-    const response = await fetch(`https://abitus-api.geia.vip/v1/pessoas/${id}`);
+    const response = await fetch(`${config.api.buscarDetalheDesaparecido}/${id}`);
     if (!response.ok) {
       throw new Error("Erro ao buscar detalhes");
     }
@@ -35,7 +38,7 @@ export async function buscarDesaparecidosComFiltro(filtros: {
   porPagina?: number; 
 }) {
   try {
-    const url = new URL("https://abitus-api.geia.vip/v1/pessoas/aberto/filtro");
+    const url = new URL(`${config.api.buscarDesaparecidosComFiltro}`);
 
     Object.entries(filtros).forEach(([chave, valor]) => {
       if (valor !== undefined && valor !== null) {
@@ -79,7 +82,7 @@ export const enviarInformacoes = async (dados: {
       });
     }
 
-    const response = await fetch("https://abitus-api.geia.vip/v1/ocorrencias/informacoes-desaparecido", {
+    const response = await fetch(`${config.api.enviarInformacoes}`, {
       method: "POST",
       headers: {
       },

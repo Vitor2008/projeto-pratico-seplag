@@ -11,7 +11,7 @@ export default function AppRoutes() {
   return (
     <div>
       <Header />
-      <div className='md:w-[1024px] md:m-auto'>
+      <div className='md:w-auto md:m-auto lg:w-[1024px]'>
         <Suspense fallback={
           <div className="flex justify-center items-center h-screen">
             <div className="w-12 h-12 border-4 border-blue-500 border-t-transparent rounded-full animate-spin"></div>

@@ -1,5 +1,6 @@
 import { useLocation } from "react-router-dom";
 import { formatarData } from "../../helper/formatarData";
+import FotoPessoa  from '../../helper/FotoPessoa';
 import { enviarInformacoes } from "../../services/api";
 import { Link } from "react-router-dom";
 import Swal, { SweetAlertResult } from "sweetalert2";
@@ -10,7 +11,8 @@ export default function Detalhes() {
   const detalhes = location.state?.detalhes;
   const dtDesaparecimento = formatarData(detalhes.ultimaOcorrencia.dtDesaparecimento);
   const dtLocalizacao = formatarData(detalhes.ultimaOcorrencia.dataLocalizacao);
-  
+
+  const hoje = new Date().toISOString().split('T')[0];
 
   if (!detalhes) {
     return <div className="p-4 text-red-500">Nenhuma informação encontrada!</div>;
@@ -28,7 +30,7 @@ export default function Detalhes() {
         <div class="grid grid-cols-2">
           <div>
             <label class="block font-medium text-gray-700">Data informação:*</label>
-            <input type="date" id="campoData" class="swal2-input w-full border rounded-md p-2 m-0 cursor-pointer">
+            <input type="date" id="campoData" class="swal2-input w-full border rounded-md p-2 m-0 cursor-pointer" max=${hoje}>
             <p id="erroData" class="text-red-500 text-sm hidden">Campo obrigatório!</p>
           </div>
           <div>
@@ -209,10 +211,10 @@ export default function Detalhes() {
         </div>
         <div className="w-3/4 md:w-1/3 relative overflow-hidden">
           <div>
-            <img
-              src={detalhes.urlFoto === null ? 'https://th.bing.com/th/id/OIP.z4b-8zmm_IHANxApPVXCCQHaHa?rs=1&pid=ImgDetMain' : detalhes.urlFoto}
+            <FotoPessoa 
+              url={detalhes.urlFoto}
               alt={detalhes.nome}
-              className="w-full max-w-md mx-auto rounded-lg shadow-md"
+              className="w-full object-cover rounded-md mb-4"
             />
           </div>
         </div>

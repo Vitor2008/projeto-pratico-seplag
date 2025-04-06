@@ -16,7 +16,7 @@ const Home = () => {
   }, [images.length]);
 
   return (
-    <div className="flex flex-col lg:flex-row items-center justify-between p-10 gap-10">
+    <div className="flex flex-col md:flex-row items-center justify-between p-10 gap-10">
       <div className="w-full md:w-1/2 md:text-left">
         <h1 className="text-lg md:text-xl font-bold text-white mb-4 bg-azul-1 p-1 uppercase">
           Busca Por Desaparecidos
